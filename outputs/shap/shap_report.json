@@ -1,0 +1,24 @@
+{
+  "folds": [
+    1
+  ],
+  "rows_explained": 150,
+  "rows_held_out": 21097,
+  "rows_per_fold": 150,
+  "sampling": "stratified by held-out block, seeded; mean|SHAP| is a row average so precision follows 1/sqrt(n) -- see the sampling_se column",
+  "rows_are": "held-out only; every explained row comes from a model that never trained on it",
+  "stages_combined": false,
+  "why_not_combined": "the corrector takes pred_stage1 as an input, so summing feature-wise would count Stage-1 features twice",
+  "method": "exact TreeSHAP via LightGBM pred_contrib (no background dataset)",
+  "worst_additivity_residual": 1.176273300984576e-08,
+  "additivity_ok": true,
+  "seed": 2026,
+  "versions": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "lightgbm": "4.6.0"
+  },
+  "caveat": "Per-feature values are the least stable level: 73 base variables each carry 7 correlated temporal derivatives and the neighbourhood radii overlap, so TreeSHAP splits credit among correlated features by tree structure. Use the family and base-variable rollups for claims."
+}

@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "check": "target.rows",
+      "ok": true,
+      "expected": 169882,
+      "observed": 169882,
+      "note": ""
+    },
+    {
+      "check": "target.blocks",
+      "ok": true,
+      "expected": 72,
+      "observed": 72,
+      "note": ""
+    },
+    {
+      "check": "target.cells",
+      "ok": true,
+      "expected": 41,
+      "observed": 41,
+      "note": ""
+    },
+    {
+      "check": "target.no_duplicate_cell_days",
+      "ok": true,
+      "expected": 0,
+      "observed": 0,
+      "note": "a duplicated observation would be double-counted in every metric"
+    },
+    {
+      "check": "canossem.duplicates_are_lossless",
+      "ok": true,
+      "expected": 0.0,
+      "observed": 0.0,
+      "note": "twins must agree on PM2.5 for keep='first' to be information-preserving"
+    },
+    {
+      "check": "canossem.deduplicated",
+      "ok": true,
+      "expected": 0,
+      "observed": 0,
+      "note": ""
+    },
+    {
+      "check": "join.no_row_fanout",
+      "ok": true,
+      "expected": 169882,
+      "observed": 169882,
+      "note": "a left merge onto duplicated keys silently inflates the table"
+    },
+    {
+      "check": "join.matched_rows",
+      "ok": true,
+      "expected": 169648,
+      "observed": 169648,
+      "note": "234 cell-days absent from the WFS extract"
+    },
+    {
+      "check": "metrics.blocks",
+      "ok": true,
+      "expected": 72,
+      "observed": 72,
+      "note": ""
+    },
+    {
+      "check": "metrics.n_sums_to_matched",
+      "ok": true,
+      "expected": 169648,
+      "observed": 169648,
+      "note": "per-block n must reconcile with the matched row count"
+    }
+  ],
+  "n_checks": 10,
+  "n_failed": 0,
+  "config": {
+    "canossem_dir": "D:\\lambda\\CanOSSEM_data",
+    "obs_source": "shards",
+    "oof_root": null,
+    "shard_root": "D:\\lambda\\Post_Defense_Code\\Data_zerofilled",
+    "years": [
+      2012,
+      2023
+    ],
+    "model_family": null,
+    "deduplication": {
+      "rows_raw": 196978,
+      "rows_deduplicated": 179468,
+      "duplicate_rows_dropped": 17510,
+      "duplicate_cell_days": 17510,
+      "duplicate_cells": 4,
+      "max_within_group_pm25_spread": 0.0
+    },
+    "canossem_observed_agrees_with_naps_daily_mean_frac": 0.13590493256625483,
+    "versions": {
+      "python": "3.14.3",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3"
+    },
+    "caveat": "Not like-for-like: our predictions are held out (out-of-fold), CanOSSEM values are final-product estimates rather than CanOSSEM out-of-fold predictions. This is a reference benchmark, not an external validation of either product."
+  }
+}

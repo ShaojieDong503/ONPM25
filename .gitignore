@@ -1,0 +1,22 @@
+# Virtual environment — rebuilt from requirements.txt, never committed
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Run logs and scratch
+*.log
+_logs/
+zero_fill_reports/
+data_check_reports/
+shap_full.log
+
+# OS
+.DS_Store
+Thumbs.db

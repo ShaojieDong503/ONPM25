@@ -1,0 +1,14 @@
+# Pinned to the versions the thesis runs used.
+# Tree-learner releases change binning and tie-breaking, so an unpinned install is a
+# different model, not just a different build.
+numpy
+pandas
+pyarrow
+scikit-learn==1.9.0
+lightgbm==4.6.0
+xgboost==3.2.0
+
+# Analysis and figures
+matplotlib
+shap
+psutil

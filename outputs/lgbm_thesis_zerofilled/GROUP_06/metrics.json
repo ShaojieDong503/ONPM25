@@ -1,0 +1,37 @@
+{
+  "fold_no": 6,
+  "fold_label": "GROUP_06",
+  "train_rows": 148559,
+  "holdout_rows": 21323,
+  "corrector_train_rows": 148559,
+  "stage1_holdout": {
+    "n": 21323,
+    "rmse": 2.8812617280840582,
+    "mae": 1.6027758974867172,
+    "r2_predictive": 0.7464976107640124,
+    "bias_pred_minus_obs": -0.30324264346433893,
+    "within_3": 0.8731885757163627,
+    "pred_on_obs_slope": 0.6550083173273157,
+    "pred_on_obs_intercept": 2.311605772346518
+  },
+  "final_holdout": {
+    "n": 21323,
+    "rmse": 2.8439535517833736,
+    "mae": 1.6035670090536143,
+    "r2_predictive": 0.7530200865857688,
+    "bias_pred_minus_obs": -0.2856905766677089,
+    "within_3": 0.8717347465178445,
+    "pred_on_obs_slope": 0.6781547363900534,
+    "pred_on_obs_intercept": 2.15372063222556
+  },
+  "corrector_holdout_output": {
+    "mean": 0.017552066796629982,
+    "std": 0.2916589138020585,
+    "min": -7.014709759972846,
+    "median": -0.008408113444814543,
+    "max": 6.750528347312334,
+    "mean_abs": 0.18344357171929493,
+    "p99_abs": 0.8827431817176525,
+    "max_abs": 7.014709759972846
+  }
+}

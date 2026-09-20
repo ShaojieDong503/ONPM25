@@ -1,0 +1,41 @@
+{
+  "pooled": {
+    "canossem": {
+      "canossem_n": 169648,
+      "canossem_rmse": 3.3248389615992697,
+      "canossem_mae": 2.017102180489031,
+      "canossem_r2_predictive": 0.5957425230093296,
+      "canossem_bias_pred_minus_obs": 0.15592840388896292,
+      "canossem_within_3": 0.7867879373762143,
+      "canossem_pred_on_obs_slope": 0.6195439486207549,
+      "canossem_pred_on_obs_intercept": 2.8158521279726534
+    }
+  },
+  "config": {
+    "canossem_dir": "D:\\lambda\\CanOSSEM_data",
+    "obs_source": "shards",
+    "oof_root": null,
+    "shard_root": "D:\\lambda\\Post_Defense_Code\\Data_zerofilled",
+    "years": [
+      2012,
+      2023
+    ],
+    "model_family": null,
+    "deduplication": {
+      "rows_raw": 196978,
+      "rows_deduplicated": 179468,
+      "duplicate_rows_dropped": 17510,
+      "duplicate_cell_days": 17510,
+      "duplicate_cells": 4,
+      "max_within_group_pm25_spread": 0.0
+    },
+    "canossem_observed_agrees_with_naps_daily_mean_frac": 0.13590493256625483,
+    "versions": {
+      "python": "3.14.3",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3"
+    },
+    "caveat": "Not like-for-like: our predictions are held out (out-of-fold), CanOSSEM values are final-product estimates rather than CanOSSEM out-of-fold predictions. This is a reference benchmark, not an external validation of either product."
+  }
+}

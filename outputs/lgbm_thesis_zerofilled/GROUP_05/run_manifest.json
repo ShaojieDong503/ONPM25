@@ -1,0 +1,721 @@
+{
+  "status": "complete",
+  "fold_no": 5,
+  "fold_label": "GROUP_05",
+  "assignment_source": "Thesis Appendix A, Table A5",
+  "plan_json": "D:\\lambda\\Post_Defense_Code\\case_plans\\GROUP_05.json",
+  "shard_root": "D:\\lambda\\Post_Defense_Code\\Data_zerofilled",
+  "train_block_count": 63,
+  "holdout_block_count": 9,
+  "train_blocks": [
+    "PAIR_2012_Central",
+    "PAIR_2012_East",
+    "PAIR_2012_North",
+    "PAIR_2012_Toronto",
+    "PAIR_2012_West_NH",
+    "PAIR_2012_West_SW",
+    "PAIR_2013_Central",
+    "PAIR_2013_East",
+    "PAIR_2013_North",
+    "PAIR_2013_Toronto",
+    "PAIR_2013_West_NH",
+    "PAIR_2013_West_SW",
+    "PAIR_2014_Central",
+    "PAIR_2014_East",
+    "PAIR_2014_North",
+    "PAIR_2014_West_NH",
+    "PAIR_2014_West_SW",
+    "PAIR_2015_Central",
+    "PAIR_2015_East",
+    "PAIR_2015_North",
+    "PAIR_2015_Toronto",
+    "PAIR_2015_West_NH",
+    "PAIR_2016_Central",
+    "PAIR_2016_East",
+    "PAIR_2016_North",
+    "PAIR_2016_Toronto",
+    "PAIR_2016_West_NH",
+    "PAIR_2016_West_SW",
+    "PAIR_2017_North",
+    "PAIR_2017_Toronto",
+    "PAIR_2017_West_NH",
+    "PAIR_2017_West_SW",
+    "PAIR_2018_Central",
+    "PAIR_2018_East",
+    "PAIR_2018_North",
+    "PAIR_2018_Toronto",
+    "PAIR_2018_West_SW",
+    "PAIR_2019_Central",
+    "PAIR_2019_East",
+    "PAIR_2019_North",
+    "PAIR_2019_Toronto",
+    "PAIR_2019_West_NH",
+    "PAIR_2019_West_SW",
+    "PAIR_2020_Central",
+    "PAIR_2020_North",
+    "PAIR_2020_Toronto",
+    "PAIR_2020_West_NH",
+    "PAIR_2020_West_SW",
+    "PAIR_2021_Central",
+    "PAIR_2021_East",
+    "PAIR_2021_North",
+    "PAIR_2021_Toronto",
+    "PAIR_2021_West_NH",
+    "PAIR_2021_West_SW",
+    "PAIR_2022_Central",
+    "PAIR_2022_East",
+    "PAIR_2022_North",
+    "PAIR_2022_West_NH",
+    "PAIR_2022_West_SW",
+    "PAIR_2023_East",
+    "PAIR_2023_Toronto",
+    "PAIR_2023_West_NH",
+    "PAIR_2023_West_SW"
+  ],
+  "holdout_blocks": [
+    "PAIR_2014_Toronto",
+    "PAIR_2015_West_SW",
+    "PAIR_2017_Central",
+    "PAIR_2017_East",
+    "PAIR_2018_West_NH",
+    "PAIR_2020_East",
+    "PAIR_2022_Toronto",
+    "PAIR_2023_Central",
+    "PAIR_2023_North"
+  ],
+  "stage1_feature_count": 651,
+  "stage1_feature_source": "D:\\lambda\\Post_Defense_Code\\Data_zerofilled\\manifest.json",
+  "stage1_nan_handling": "NaN -> 0",
+  "corrector_raw_feature_count": 40,
+  "corrector_final_feature_count": 80,
+  "corrector_target": "observed_pm25 - in_sample_stage1_prediction",
+  "corrector_pool_rule": "smoke/fire signal OR observed_pm25 >= 15 OR abs(in_sample_stage1_residual) >= 3",
+  "cv_prediction_clipping": "none",
+  "seed": 2026,
+  "versions": {
+    "python": "3.14.3",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "lightgbm": "4.6.0",
+    "scikit_learn": "1.9.0"
+  },
+  "stage1_params": {
+    "objective": "regression",
+    "n_estimators": 2000,
+    "learning_rate": 0.02070626290376973,
+    "num_leaves": 255,
+    "max_depth": 0,
+    "min_child_samples": 63,
+    "subsample": 0.9943977224069515,
+    "colsample_bytree": 0.558977598960405,
+    "reg_alpha": 1.2810104001793796,
+    "reg_lambda": 0.007139220212356222,
+    "random_state": 2026,
+    "n_jobs": -1,
+    "verbosity": -1,
+    "force_col_wise": true,
+    "max_bin": 127,
+    "subsample_for_bin": 200000,
+    "min_data_in_bin": 5
+  },
+  "corrector_params": {
+    "objective": "regression",
+    "n_estimators": 2000,
+    "learning_rate": 0.02070626290376973,
+    "num_leaves": 255,
+    "max_depth": 0,
+    "min_child_samples": 63,
+    "subsample": 0.9943977224069515,
+    "colsample_bytree": 0.558977598960405,
+    "reg_alpha": 1.2810104001793796,
+    "reg_lambda": 0.007139220212356222,
+    "random_state": 2026,
+    "n_jobs": -1,
+    "verbosity": -1,
+    "force_col_wise": true,
+    "max_bin": 127,
+    "subsample_for_bin": 200000,
+    "min_data_in_bin": 5
+  },
+  "train_loader_summary": [
+    {
+      "block": "PAIR_2012_Central",
+      "rows": 2903,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2012_East",
+      "rows": 2181,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2012_North",
+      "rows": 1797,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2012_Toronto",
+      "rows": 1827,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2012_West_NH",
+      "rows": 2550,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2012_West_SW",
+      "rows": 2879,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2013_Central",
+      "rows": 2906,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2013_East",
+      "rows": 2176,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2013_North",
+      "rows": 1814,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2013_Toronto",
+      "rows": 1806,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2013_West_NH",
+      "rows": 2522,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2013_West_SW",
+      "rows": 2842,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2014_Central",
+      "rows": 2920,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2014_East",
+      "rows": 2189,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2014_North",
+      "rows": 1809,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2014_West_NH",
+      "rows": 2188,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2014_West_SW",
+      "rows": 2908,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2015_Central",
+      "rows": 2907,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2015_East",
+      "rows": 2177,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2015_North",
+      "rows": 1809,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2015_Toronto",
+      "rows": 1813,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2015_West_NH",
+      "rows": 2542,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2016_Central",
+      "rows": 1463,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2016_East",
+      "rows": 2194,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2016_North",
+      "rows": 1500,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2016_Toronto",
+      "rows": 1825,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2016_West_NH",
+      "rows": 2165,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2016_West_SW",
+      "rows": 2092,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2017_North",
+      "rows": 1820,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2017_Toronto",
+      "rows": 1817,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2017_West_NH",
+      "rows": 2550,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2017_West_SW",
+      "rows": 3115,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2018_Central",
+      "rows": 2885,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2018_East",
+      "rows": 2189,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2018_North",
+      "rows": 1822,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2018_Toronto",
+      "rows": 1820,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2018_West_SW",
+      "rows": 3267,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2019_Central",
+      "rows": 3276,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2019_East",
+      "rows": 2179,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2019_North",
+      "rows": 1825,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2019_Toronto",
+      "rows": 1824,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2019_West_NH",
+      "rows": 2552,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2019_West_SW",
+      "rows": 3281,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2020_Central",
+      "rows": 3281,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2020_North",
+      "rows": 1830,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2020_Toronto",
+      "rows": 1824,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2020_West_NH",
+      "rows": 2559,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2020_West_SW",
+      "rows": 3278,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2021_Central",
+      "rows": 3280,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2021_East",
+      "rows": 2180,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2021_North",
+      "rows": 1825,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2021_Toronto",
+      "rows": 1820,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2021_West_NH",
+      "rows": 2541,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2021_West_SW",
+      "rows": 3259,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2022_Central",
+      "rows": 3280,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2022_East",
+      "rows": 1824,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2022_North",
+      "rows": 1825,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2022_West_NH",
+      "rows": 2548,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2022_West_SW",
+      "rows": 3248,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2023_East",
+      "rows": 1818,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2023_Toronto",
+      "rows": 1701,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2023_West_NH",
+      "rows": 2546,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2023_West_SW",
+      "rows": 3226,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    }
+  ],
+  "holdout_loader_summary": [
+    {
+      "block": "PAIR_2014_Toronto",
+      "rows": 1823,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2015_West_SW",
+      "rows": 2900,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2017_Central",
+      "rows": 2915,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2017_East",
+      "rows": 2175,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2018_West_NH",
+      "rows": 2542,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2020_East",
+      "rows": 2185,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2022_Toronto",
+      "rows": 1812,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2023_Central",
+      "rows": 3280,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    },
+    {
+      "block": "PAIR_2023_North",
+      "rows": 1631,
+      "direct": 213,
+      "translated": 438,
+      "absent": 0,
+      "nan_zero_filled": 0
+    }
+  ],
+  "elapsed_seconds": 398.00363755226135
+}
