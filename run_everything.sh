@@ -38,11 +38,21 @@ JOBS=4;    THREADS=8
 # matrix), so 4 concurrent is ~24 GB against 125 GB of RAM.
 RF_JOBS=4; RF_THREADS=8
 
-# Flags applied to EVERY fold run. Must match what the LightGBM primary folds
-# used, or compare_models.py is not comparing like with like.
-COMMON=(--shard-root Data --case-plans-dir case_plans)
-# COMMON=(--shard-root Data --case-plans-dir case_plans \
-#         --fill-policy tiered --features-file features_policy/aod_filled_only.json)
+# Flags applied to EVERY fold run, so all three families and every experiment see
+# the identical feature set and fill rule -- otherwise compare_models.py is not
+# comparing like with like.
+#
+# --fill-policy tiered: the 34 distance-like predictors
+# (src_viirs_dist_nearest_*, burned_nearest_km_*) take DISTANCE_FILL=9999 where they
+# are missing; every other NaN still goes to 0. Zero in a distance-to-nearest means
+# "a fire directly overhead" -- the maximum-signal end -- so filling absence with 0
+# inverts those columns wherever no fire was in range. 9999 sits beyond the largest
+# observed radius (999.7 km) and reads as "farther than anything seen".
+#
+# This does NOT change the feature count. --fill-policy changes the VALUE written
+# into missing cells; --features-file changes which columns exist. All 651 stay.
+FILL=(--fill-policy tiered)
+COMMON=(--shard-root Data --case-plans-dir case_plans "${FILL[@]}")
 
 # Reads commands on stdin, one per line, and runs $1 of them at a time.
 # Exits non-zero if any command fails, which set -e turns into a halt.
@@ -50,7 +60,11 @@ pool() { xargs -P "$1" -d '\n' -I CMD bash -c CMD; }
 
 step() {
   local n=$1 text=$2
-  if (( n < FROM || n > TO )); then echo "[$n] skip   $text"; return 1; fi
+  # Steps may carry a letter suffix (5b) for variants inserted without renumbering
+  # everything after them. Range-check on the numeric prefix only -- `(( 5b < 0 ))`
+  # is a bash arithmetic error, which under `set -e` would kill the run.
+  local num=${n%%[!0-9]*}
+  if (( num < FROM || num > TO )); then echo "[$n] skip   $text"; return 1; fi
   echo; printf '=%.0s' {1..78}; echo
   echo "[$n] $text   $(date +%H:%M:%S)"
   printf '=%.0s' {1..78}; echo
@@ -127,7 +141,7 @@ if step 6 "Robustness: alternative fold assignments  (4 seeds x 8 folds)"; then
   # null result here is weak evidence. Skip with: ./run_everything.sh 7
   for s in 101 202 303 404; do
     for f in $(seq 1 8); do
-      echo "python run_lgbm_thesis_fold.py --fold $f --shard-root Data --case-plans-dir case_plans_foldalt_seed$s --threads $THREADS --out-root outputs/robustness/foldalt_$s"
+      echo "python run_lgbm_thesis_fold.py --fold $f --shard-root Data --case-plans-dir case_plans_foldalt_seed$s ${FILL[*]} --threads $THREADS --out-root outputs/robustness/foldalt_$s"
     done
   done | pool $JOBS
 fi
@@ -135,7 +149,7 @@ fi
 # -----------------------------------------------------------------------------
 if step 7 "Robustness: leave-cells-out spatial CV  (7 folds, cell-partitioned shards)"; then
   for f in $(seq 1 7); do
-    echo "python run_lgbm_thesis_fold.py --fold $f --shard-root Data_by_cell --case-plans-dir case_plans_spatialcv --threads $THREADS --out-root outputs/robustness/spatial_cv"
+    echo "python run_lgbm_thesis_fold.py --fold $f --shard-root Data_by_cell --case-plans-dir case_plans_spatialcv ${FILL[*]} --threads $THREADS --out-root outputs/robustness/spatial_cv"
   done | pool $JOBS
 fi
 
@@ -149,7 +163,7 @@ fi
 # -----------------------------------------------------------------------------
 if step 9 "External validation: train all Ontario, test all Quebec"; then
   python run_lgbm_thesis_fold.py --fold 1 --shard-root Data_on_plus_qc \
-    --case-plans-dir case_plans_external_qc --threads $VCPU \
+    --case-plans-dir case_plans_external_qc "${FILL[@]}" --threads $VCPU \
     --out-root outputs/external_qc
 fi
 
