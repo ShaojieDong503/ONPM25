@@ -1,0 +1,21 @@
+# Pinned to the workstation that produced the reported results. LightGBM in
+# particular must match: tree construction differs subtly between minor versions,
+# and the refit-correctors shortcut asserts that saved Stage-1 predictions are
+# reproduced to 1e-6, which a version drift would break loudly (that is the point).
+numpy==2.4.6
+pandas==3.0.3
+pyarrow==24.0.0
+scikit-learn==1.9.0
+lightgbm==4.6.0
+xgboost==3.2.0
+joblib==1.5.3
+
+# Figures and SHAP. Not needed to fit or score anything, which is why their
+# absence stayed hidden until the CanOSSEM heatmap step -- the metrics had
+# already been written and passed 10/10 checks before the plot failed. `shap` is
+# imported lazily inside the Random Forest branch of make_fold_shap.py only
+# (LightGBM and XGBoost use their own native pred_contrib paths), so a missing
+# install would otherwise surface hours into step 10.
+matplotlib==3.10.9
+shap==0.52.0
+scipy==1.17.1
